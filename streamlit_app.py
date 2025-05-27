@@ -1,4 +1,8 @@
 import streamlit as st
+
+# ✅ Page config must come right after Streamlit import
+st.set_page_config(page_title="Books Dashboard", layout="wide")
+
 import pandas as pd
 
 # Load data once
@@ -9,8 +13,6 @@ def load_data():
     return df
 
 df = load_data()
-
-st.set_page_config(page_title="Books Dashboard", layout="wide")
 
 # Sidebar with metrics
 st.sidebar.title("📚 Books Summary")
