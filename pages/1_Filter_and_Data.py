@@ -44,3 +44,6 @@ st.download_button(
     file_name="filtered_books.csv",
     mime="text/csv"
 )
+
+# Adding last updated timestamp
+st.caption(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
