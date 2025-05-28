@@ -3,6 +3,8 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 import warnings
+from datetime import datetime
+
 
 st.markdown("<h4 style='color:#4CAF50;'>📚 Explore Book Insights by Rating, Price, and Availability</h4>", unsafe_allow_html=True)
 
@@ -44,3 +46,7 @@ with st.expander("✅ Book Availability"):
     sns.countplot(y="Availability", data=df, hue="Availability", palette="Set2", legend=False)
     ax.set_title("Book Availability")
     st.pyplot(fig)
+
+# Add last updated timestamp
+st.caption(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+
