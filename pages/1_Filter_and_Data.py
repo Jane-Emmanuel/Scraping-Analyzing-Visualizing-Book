@@ -3,6 +3,9 @@ import pandas as pd
 
 # Load data
 df = pd.read_csv("all_books.csv")
+df = pd.read_csv("all_books.csv")
+df["Price"] = df["Price"].str.replace("£", "").astype(float)  # <-- Add this to clean price
+
 
 st.markdown("## 🔎 Filter and Explore Books")
 
