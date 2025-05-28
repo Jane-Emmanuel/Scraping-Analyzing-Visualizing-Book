@@ -24,5 +24,5 @@ This project scrapes book data from [Books to Scrape](http://books.toscrape.com/
 
 ## Deployment
 The Streamlit app is deployed on Streamlit Cloud for easy access:  
-[]
+[[🌐 View the live Streamlit app](https://scrapi-phedjzp5u84kcdtczazjno.streamlit.app/)]
 
