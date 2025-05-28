@@ -47,6 +47,8 @@ with st.expander("✅ Book Availability"):
     st.pyplot(fig)
 
 # Top 5 most expensive books - bar chart
+
+with st.expander("💖 Top 5 most expensive books"):
 top_expensive = df.sort_values(by="Price", ascending=False).head(5)
 st.subheader("💰 Top 5 Most Expensive Books")
 
