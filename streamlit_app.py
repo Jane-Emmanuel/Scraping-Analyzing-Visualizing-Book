@@ -1,4 +1,6 @@
 import streamlit as st
+from datetime import datetime
+
 
 # ✅ Page config must come right after Streamlit import
 st.set_page_config(page_title="Books Dashboard", layout="wide")
@@ -41,3 +43,7 @@ Use the left sidebar to navigate through:
 
 ---
 """)
+
+# Adding last updated timestamp
+st.caption(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+
