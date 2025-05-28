@@ -4,8 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import warnings
 
-st.markdown("<h3 style='color:#FF69B4;'>📊 Visual Insights</h3>", unsafe_allow_html=True)
-st.markdown("<p style='color:#FFC0CB;'>Explore book trends by rating, price, and availability.</p>", unsafe_allow_html=True)
+st.markdown("<h4 style='color:#4CAF50;'>📚 Explore Book Insights by Rating, Price, and Availability</h4>", unsafe_allow_html=True)
 
 
 sns.set(style="whitegrid")
