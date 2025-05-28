@@ -4,6 +4,8 @@ from collections import Counter
 import re
 import seaborn as sns
 import matplotlib.pyplot as plt
+from datetime import datetime
+
 
 @st.cache_data
 def load_data():
@@ -26,3 +28,7 @@ fig, ax = plt.subplots()
 sns.barplot(x="Frequency", y="Word", data=top_words_df, palette="mako")
 ax.set_title("Top 10 Common Words in Titles")
 st.pyplot(fig)
+
+# Add last updated timestamp at the bottom
+st.caption(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+
