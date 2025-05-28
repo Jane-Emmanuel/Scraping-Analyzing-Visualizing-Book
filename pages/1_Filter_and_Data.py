@@ -1,22 +1,32 @@
 import streamlit as st
 import pandas as pd
 
-@st.cache_data
-def load_data():
-    df = pd.read_csv("all_books.csv")
-    return df
+# Load data
+df = pd.read_csv("all_books.csv")
 
-df = load_data()
+st.markdown("## 🔎 Filter and Explore Books")
 
-st.title("🔍 Filter and Explore Books")
+# Sidebar search input
+search_term = st.sidebar.text_input("🔍 Search book titles:")
 
-rating_options = df["Rating"].unique().tolist()
-availability_options = df["Availability"].unique().tolist()
+# Sidebar filters
+price_range = st.sidebar.slider("💰 Price range (£)", float(df["Price"].min()), float(df["Price"].max()), (float(df["Price"].min()), float(df["Price"].max())))
+rating_filter = st.sidebar.multiselect("⭐ Select Ratings", options=df["Rating"].unique(), default=list(df["Rating"].unique()))
+availability_filter = st.sidebar.multiselect("📦 Availability", options=df["Availability"].unique(), default=list(df["Availability"].unique()))
 
-selected_ratings = st.multiselect("Select Ratings", rating_options, default=rating_options)
-selected_avail = st.multiselect("Select Availability", availability_options, default=availability_options)
+# Filter data based on input
+filtered_df = df.copy()
 
-filtered_df = df[df["Rating"].isin(selected_ratings) & df["Availability"].isin(selected_avail)]
+if search_term:
+    filtered_df = filtered_df[filtered_df["Title"].str.contains(search_term, case=False, na=False)]
 
-st.dataframe(filtered_df)
-st.markdown(f"**Total books after filter: {len(filtered_df)}**")
+filtered_df = filtered_df[
+    (filtered_df["Price"] >= price_range[0]) &
+    (filtered_df["Price"] <= price_range[1]) &
+    (filtered_df["Rating"].isin(rating_filter)) &
+    (filtered_df["Availability"].isin(availability_filter))
+]
+
+# Show filtered results
+st.markdown(f"### 📘 Showing {len(filtered_df)} matching books")
+st.dataframe(filtered_df[["Title", "Price", "Rating", "Availability"]])
