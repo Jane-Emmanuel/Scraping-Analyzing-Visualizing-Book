@@ -3,9 +3,7 @@ import pandas as pd
 
 # Load data
 df = pd.read_csv("all_books.csv")
-df = pd.read_csv("all_books.csv")
-df["Price"] = df["Price"].str.replace("£", "").astype(float)  # <-- Add this to clean price
-
+df["Price"] = df["Price"].str.replace("£", "").astype(float)
 
 st.markdown("## 🔎 Filter and Explore Books")
 
@@ -33,3 +31,16 @@ filtered_df = filtered_df[
 # Show filtered results
 st.markdown(f"### 📘 Showing {len(filtered_df)} matching books")
 st.dataframe(filtered_df[["Title", "Price", "Rating", "Availability"]])
+
+# Download button
+@st.cache_data
+def convert_df(df):
+    return df.to_csv(index=False).encode('utf-8')
+
+csv = convert_df(filtered_df)
+st.download_button(
+    label="📥 Download Filtered CSV",
+    data=csv,
+    file_name="filtered_books.csv",
+    mime="text/csv"
+)
