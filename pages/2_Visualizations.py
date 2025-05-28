@@ -18,22 +18,6 @@ df = load_data()
 
 st.markdown("<h4 style='color:#4CAF50;'>📚 Explore Book Insights by Rating, Price, and Availability</h4>", unsafe_allow_html=True)
 
-# Top 5 most expensive books - bar chart
-top_expensive = df.sort_values(by="Price", ascending=False).head(5)
-st.subheader("💰 Top 5 Most Expensive Books")
-
-fig, ax = plt.subplots()
-sns.barplot(
-    x="Price",
-    y="Title",
-    data=top_expensive,
-    palette="rocket",
-    ax=ax
-)
-ax.set_xlabel("Price (£)")
-ax.set_ylabel("Book Title")
-st.pyplot(fig)
-
 
 st.title("📊 Visual Analysis")
 
@@ -61,6 +45,23 @@ with st.expander("✅ Book Availability"):
     sns.countplot(y="Availability", data=df, hue="Availability", palette="Set2", legend=False)
     ax.set_title("Book Availability")
     st.pyplot(fig)
+
+# Top 5 most expensive books - bar chart
+top_expensive = df.sort_values(by="Price", ascending=False).head(5)
+st.subheader("💰 Top 5 Most Expensive Books")
+
+fig, ax = plt.subplots()
+sns.barplot(
+    x="Price",
+    y="Title",
+    data=top_expensive,
+    palette="rocket",
+    ax=ax
+)
+ax.set_xlabel("Price (£)")
+ax.set_ylabel("Book Title")
+st.pyplot(fig)
+
 
 # Add last updated timestamp
 st.caption(f"Last updated: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
