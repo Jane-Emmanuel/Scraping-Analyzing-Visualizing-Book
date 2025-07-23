@@ -15,7 +15,7 @@ This project scrapes book data from [Books to Scrape](http://books.toscrape.com/
 - Clean, modular code suitable for demonstration and portfolio
 - Deployable Streamlit app showcasing interactive data exploration
 
-## How to Run
+## How To Run
 1. Clone the repo  
 2. Run the notebook locally for detailed analysis  
 3. Run the Streamlit app with:
